@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl">
+<head>
+<meta charset="utf-8" />
+<title>Kalkulator</title>
+</head>
+<body>
+
+<form action="{{_APP_URL}}" method="post">
+	<label for="amount">Kwota: </label>
+	<input id="amount" type="text" name="amount" value="{{ amount }}" /><br />
+	<label for="years">Lata: </label>
+	<input id="years" type="text" name="years" value="{{ years }}" /><br />
+	<label for="interest">Oprocentowanie: </label>
+	<input id="interest" type="text" name="interest" value="{{ interest  }}" /><br />
+	<input type="submit" value="Oblicz" />
+</form>	
+
+{% if messages | length >0 %} 	
+		<ol style="margin: 20px; padding: 10px 10px 10px 30px; border-radius: 5px; background-color: #f88; width:300px;">
+			{% for msg in messages %}
+			<li> {{msg}} </li>
+		{% endfor %}
+		</ol>
+{% endif %}
+{% if result %}
+<div style="margin: 20px; padding: 10px; border-radius: 5px; background-color: #ff0; width:300px;">	
+	Miesięczna rata: {{result}} 	
+</div>
+	{% endif %}
+</body>
+</html>
